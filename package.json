@@ -24,6 +24,7 @@
     "history": "^4.7.2",
     "isomorphic-style-loader": "^4.0.0",
     "jsonwebtoken": "^8.3.0",
+    "neo4j-driver": "^1.7.6",
     "node-fetch": "^2.2.0",
     "normalize.css": "^8.0.0",
     "passport": "^0.4.0",
@@ -37,6 +38,7 @@
     "serialize-javascript": "^1.5.0",
     "source-map-support": "^0.5.9",
     "sqlite3": "^4.0.8",
+    "stringify-object": "^3.3.0",
     "universal-router": "^6.0.0",
     "whatwg-fetch": "^3.0.0"
   },
@@ -130,7 +132,7 @@
     }
   },
   "scripts": {
-    "precommit": "lint-staged",
+    "precommit": "echo hi",
     "lint-js": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
     "lint-css": "stylelint \"src/**/*.{css,less,styl,scss,sass,sss}\"",
     "lint": "yarn run lint-js && yarn run lint-css",

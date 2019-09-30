@@ -1,0 +1,6 @@
+{
+  "name": "IDE",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./IDE.js"
+}
