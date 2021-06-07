@@ -21,8 +21,8 @@ import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
 import router from './router';
-
 import handler from './handler';
+import transformer from './transformer';
 
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
@@ -57,7 +57,14 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.post('/api/query', handler);
+app.get('/api/transformer', transformer);
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
@@ -113,7 +120,17 @@ app.get('*', async (req, res, next) => {
     if (route.chunk) addChunk(route.chunk);
     if (route.chunks) route.chunks.forEach(addChunk);
 
-    data.scripts = Array.from(scripts);
+    const externalScripts = [
+      // 'https://medv.io/codejar/codejar.js',
+      // 'https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js'
+      'https://unpkg.com/react@17/umd/react.production.min.js',
+      'https://unpkg.com/react-dom@17/umd/react-dom.production.min.js',
+      'https://unpkg.com/babel-standalone@6/babel.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/sinon.js/9.2.4/sinon.min.js',
+      // 'https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js',
+    ]
+    data.scripts = Array.from([...scripts, ...externalScripts]);
     data.app = {
       apiUrl: config.api.clientUrl,
     };

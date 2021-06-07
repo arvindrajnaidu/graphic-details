@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
 import IDE from '../../components/IDE';
+import RuntimeProvider from '../../providers/RuntimeProvider';
 
 class Home extends React.Component {
   static propTypes = {
@@ -26,11 +27,13 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <IDE />
+      <RuntimeProvider>
+        <div>
+          <div className={s.container}>
+            <IDE />
+          </div>
         </div>
-      </div>
+      </RuntimeProvider>
     );
   }
 }
