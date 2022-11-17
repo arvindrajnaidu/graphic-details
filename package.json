@@ -114,7 +114,7 @@
     "stylelint": "^9.5.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-order": "^1.0.0",
-    "svg-url-loader": "^2.3.2",
+    "svg-url-loader": "^8.0.0",
     "url-loader": "^1.1.1",
     "webpack": "^4.19.1",
     "webpack-assets-manifest": "^3.0.2",
