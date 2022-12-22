@@ -27,7 +27,7 @@
     "history": "^4.7.2",
     "isomorphic-style-loader": "^4.0.0",
     "istanbul-lib-coverage": "^3.0.0",
-    "jsonwebtoken": "^8.3.0",
+    "jsonwebtoken": "^9.0.0",
     "neo4j-driver": "^1.7.8",
     "node-fetch": "^2.2.0",
     "node-pty": "^0.10.1",
